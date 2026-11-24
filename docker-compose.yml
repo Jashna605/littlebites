@@ -1,0 +1,14 @@
+services:
+  littlebites:
+    build: .
+    env_file: .env
+    environment:
+      DB_PATH: /data/littlebites.db
+    ports:
+      - "8000:8000"
+    volumes:
+      - littlebites-data:/data
+    restart: unless-stopped
+
+volumes:
+  littlebites-data:

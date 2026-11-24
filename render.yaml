@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: littlebites
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    disk:
+      name: littlebites-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: DB_PATH
+        value: /data/littlebites.db
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ALLOW_SIGNUP
+        value: "true"
+      - key: TRUST_PROXY
+        value: "true"
+      - key: MEAL_BUDDY_DEMO
+        value: "true"
